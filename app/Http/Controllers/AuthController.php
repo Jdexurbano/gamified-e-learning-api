@@ -41,8 +41,8 @@ class AuthController extends Controller
             return response()->json(['message'=>'incorect credentials'],404);
         }
 
-        // Check if the user's role is 'admin'
-        if ($user->role !== 'admin') {
+        // Check if the user's role is 'admin' or 'teacher'
+        if ($user->role !== 'admin' && $user->role !== 'teacher') {
             return response()->json(['message' => 'Unauthorized: User is not a teacher'], 403);
         }
 
@@ -67,7 +67,7 @@ class AuthController extends Controller
 
         // Check if the user's role is 'student'
         if ($user->role !== 'student') {
-            return response()->json(['message' => 'Unauthorized: User is not a teacher'], 403);
+            return response()->json(['message' => 'Unauthorized: User is not a student'], 403);
         }
 
         // creata a token if the user credentials is correct
