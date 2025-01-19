@@ -15,7 +15,7 @@ class UserController extends Controller
                ->first();
 
         if (!$student) {
-            abort(404, 'Post not found');
+            abort(404, 'User not found');
         }
     
         return $student;
